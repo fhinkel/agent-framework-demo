@@ -1,0 +1,300 @@
+{
+  "id": "f8a812de-948f-409d-9a24-81c0002ac2cd",
+  "app_name": "/Volumes/google/src/cloud/hangfei/agent_panda_workspace/google3/experimental/genai/python/agents/samples",
+  "user_id": "test_user",
+  "state": {
+    "_time": "2025-01-28 16:06:08.699683"
+  },
+  "events": [
+    {
+      "content": {
+        "parts": [
+          {
+            "text": "Hi"
+          }
+        ],
+        "role": "user"
+      },
+      "invocation_id": "AQQPUYhb",
+      "author": "user",
+      "actions": {
+        "state_delta": {}
+      },
+      "id": "4tZUlvte",
+      "timestamp": 1738109109.219684
+    },
+    {
+      "content": {
+        "parts": [
+          {
+            "text": "Hi there!  How can I help you today?\n"
+          }
+        ],
+        "role": "model"
+      },
+      "invocation_id": "AQQPUYhb",
+      "author": "data_processing_agent",
+      "actions": {
+        "state_delta": {}
+      },
+      "id": "y0FnEABP",
+      "timestamp": 1738109109.643193
+    },
+    {
+      "content": {
+        "parts": [
+          {
+            "text": "Could you roll a die for me?"
+          }
+        ],
+        "role": "user"
+      },
+      "invocation_id": "oZ4BfkqK",
+      "author": "user",
+      "actions": {
+        "state_delta": {}
+      },
+      "id": "EXGCFhRg",
+      "timestamp": 1738109150.8069
+    },
+    {
+      "content": {
+        "parts": [
+          {
+            "text": "I'd be happy to!  Let's roll a standard six-sided die.\n\n"
+          },
+          {
+            "function_call": {
+              "args": {
+                "sides": 6
+              },
+              "name": "roll_die"
+            }
+          }
+        ],
+        "role": "model"
+      },
+      "invocation_id": "oZ4BfkqK",
+      "author": "data_processing_agent",
+      "actions": {
+        "state_delta": {}
+      },
+      "id": "BUcJHgxX",
+      "timestamp": 1738109151.44558
+    },
+    {
+      "content": {
+        "parts": [
+          {
+            "function_response": {
+              "name": "roll_die",
+              "response": {
+                "result": 2
+              }
+            }
+          }
+        ],
+        "role": "user"
+      },
+      "invocation_id": "oZ4BfkqK",
+      "author": "data_processing_agent",
+      "actions": {
+        "state_delta": {}
+      },
+      "function_call_event_id": "BUcJHgxX",
+      "id": "3Tv1cgbW",
+      "timestamp": 1738109151.447903
+    },
+    {
+      "content": {
+        "parts": [
+          {
+            "text": "The result of rolling the six-sided die is 2.\n"
+          }
+        ],
+        "role": "model"
+      },
+      "invocation_id": "oZ4BfkqK",
+      "author": "data_processing_agent",
+      "actions": {
+        "state_delta": {}
+      },
+      "id": "Y6TbqvLa",
+      "timestamp": 1738109151.904669
+    },
+    {
+      "content": {
+        "parts": [
+          {
+            "text": "Could you roll  another 5-sided for me?"
+          }
+        ],
+        "role": "user"
+      },
+      "invocation_id": "qpooXQDF",
+      "author": "user",
+      "actions": {
+        "state_delta": {}
+      },
+      "id": "yOETCWiy",
+      "timestamp": 1738109155.476297
+    },
+    {
+      "content": {
+        "parts": [
+          {
+            "text": "OK. Rolling a 5-sided die now.\n\n"
+          },
+          {
+            "function_call": {
+              "args": {
+                "sides": 5
+              },
+              "name": "roll_die"
+            }
+          },
+          {
+            "text": "\n"
+          }
+        ],
+        "role": "model"
+      },
+      "invocation_id": "qpooXQDF",
+      "author": "data_processing_agent",
+      "actions": {
+        "state_delta": {}
+      },
+      "id": "6m47ZiKm",
+      "timestamp": 1738109156.110701
+    },
+    {
+      "content": {
+        "parts": [
+          {
+            "function_response": {
+              "name": "roll_die",
+              "response": {
+                "result": 1
+              }
+            }
+          }
+        ],
+        "role": "user"
+      },
+      "invocation_id": "qpooXQDF",
+      "author": "data_processing_agent",
+      "actions": {
+        "state_delta": {}
+      },
+      "function_call_event_id": "6m47ZiKm",
+      "id": "keQP1O0r",
+      "timestamp": 1738109156.112946
+    },
+    {
+      "content": {
+        "parts": [
+          {
+            "text": "The result of rolling the 5-sided die is 1.\n"
+          }
+        ],
+        "role": "model"
+      },
+      "invocation_id": "qpooXQDF",
+      "author": "data_processing_agent",
+      "actions": {
+        "state_delta": {}
+      },
+      "id": "l1FvfqGD",
+      "timestamp": 1738109156.58183
+    },
+    {
+      "content": {
+        "parts": [
+          {
+            "text": "Could you check if they are prime numbers?"
+          }
+        ],
+        "role": "user"
+      },
+      "invocation_id": "EyoVMWxF",
+      "author": "user",
+      "actions": {
+        "state_delta": {}
+      },
+      "id": "HpOJRoEg",
+      "timestamp": 1738109160.493481
+    },
+    {
+      "content": {
+        "parts": [
+          {
+            "text": "Certainly. Let's check if the numbers from the previous rolls (2 and 1) are prime numbers.\n\n"
+          },
+          {
+            "function_call": {
+              "args": {
+                "nums": [
+                  2,
+                  1
+                ]
+              },
+              "name": "check_prime"
+            }
+          },
+          {
+            "text": "\n"
+          }
+        ],
+        "role": "model"
+      },
+      "invocation_id": "EyoVMWxF",
+      "author": "data_processing_agent",
+      "actions": {
+        "state_delta": {}
+      },
+      "id": "8nYS80sl",
+      "timestamp": 1738109161.194519
+    },
+    {
+      "content": {
+        "parts": [
+          {
+            "function_response": {
+              "name": "check_prime",
+              "response": {
+                "result": "2 are prime numbers."
+              }
+            }
+          }
+        ],
+        "role": "user"
+      },
+      "invocation_id": "EyoVMWxF",
+      "author": "data_processing_agent",
+      "actions": {
+        "state_delta": {}
+      },
+      "function_call_event_id": "8nYS80sl",
+      "id": "GMTudb5L",
+      "timestamp": 1738109161.19674
+    },
+    {
+      "content": {
+        "parts": [
+          {
+            "text": "The results of the prime check are in: 2 is a prime number, but 1 is not.\n"
+          }
+        ],
+        "role": "model"
+      },
+      "invocation_id": "EyoVMWxF",
+      "author": "data_processing_agent",
+      "actions": {
+        "state_delta": {}
+      },
+      "id": "AjK5Eorh",
+      "timestamp": 1738109161.714991
+    }
+  ],
+  "last_update_time": 1738109161.714991
+}

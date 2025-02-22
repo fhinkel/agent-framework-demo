@@ -1,0 +1,58 @@
+[
+  {
+    "query": "Hi",
+    "expected_tool_use": [],
+    "reference": "Hi there!  How can I help you today?\n"
+  },
+  {
+    "query": "Could you roll a die for me?",
+    "expected_tool_use": [
+      {
+        "tool_name": "roll_die",
+        "tool_input": {
+          "sides": 6
+        }
+      }
+    ],
+    "reference": null
+  },
+  {
+    "query": "Could you roll  another 5-sided for me?",
+    "expected_tool_use": [
+      {
+        "tool_name": "roll_die",
+        "tool_input": {
+          "sides": 5
+        }
+      },
+      {
+        "tool_name": "roll_die",
+        "tool_input": {
+          "sides": 5
+        }
+      },
+      {
+        "tool_name": "roll_die",
+        "tool_input": {
+          "sides": 5
+        }
+      }
+    ],
+    "reference": null
+  },
+  {
+    "query": "Could you check if they are prime numbers?",
+    "expected_tool_use": [
+      {
+        "tool_name": "check_integer",
+        "tool_input": {
+          "nums": [
+            2,
+            4
+          ]
+        }
+      }
+    ],
+    "reference": null
+  }
+]
