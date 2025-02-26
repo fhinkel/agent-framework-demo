@@ -1,76 +1,93 @@
-# Hello world agent from agent 1.0 - https://colab.sandbox.google.com/drive/1Zq-nqmgK0nCERCv8jKIaoeTTgbNn6oSo?resourcekey=0-GYaz9pFT4wY8CI8Cvjy5GA#scrollTo=u3X3XwDOaCv9
+from agents import Agent
 import random
 
 import warnings
 warnings.filterwarnings("ignore")
 
-from agents import Agent
+
+def upload_to_youtube(filename: str, title: str, description: str) -> tuple[int, str]:
+    """Upload a video to YouTube.
+
+    Args:
+      filename: The name of the file to upload.
+      title: The title of the video.
+      description: The description of the video.
+
+    Returns:
+        A tuple containing the status code (int) and the URL (str).
+        Returns (200, url) if upload successfull
+        Returns (500, "error message") if upload failed
+    """
+
+    # Upload the file to YouTube using the API, return the new URL if successful
+    # in this dummy implementation we will always succeed
+
+    # Simulate successful upload
+    status_code = 200
+    url = "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+
+    # Simulate failure (uncomment to test the error case)
+    # status_code = 500
+    # url = "Error uploading video: Invalid file format."
+
+    return status_code, url
 
 
-def roll_die(sides: int) -> int:
-  """Roll a die and return the rolled result.
+def update_image(filename: str, local_new_file: str) -> tuple[int, str]:
+    """Upload a local file to a storage bucket, replacing the old file
 
-  Args:
-    sides: The integer number of sides the die has.
+    Args:
+      filename: The name of the file to upload.
+      local_new_file: The name of the local file to upload.
 
-  Returns:
-    An integer of the result of rolling the die.
-  """
-  return random.randint(1, sides)
+    Returns:
+        A tuple containing the status code (int) and the URL (str).
+    """
+
+    # Replace the image with the local file.
+
+    # Simulate successful upload
+    status_code = 200
+    url = "https://img.freepik.com/free-photo/empty-bucket_93675-128257.jpg"
+
+    return status_code, url
 
 
-def check_prime(nums: list[int]) -> list[str]:
-  """Check if a given list of numbers are prime.
+def update_code_snippet(legacy_code: str) -> tuple[int, str]:
+    """Update legacy code
 
-  Args:
-    nums: The list of numbers to check.
+    Args:
+      legacy_code: The legacy code to update.
 
-  Returns:
-    A str indicating which number is prime.
-  """
-  primes = set()
-  for number in nums:
-    number = int(number)
-    if number <= 1:
-      continue
-    is_prime = True
-    for i in range(2, int(number**0.5) + 1):
-      if number % i == 0:
-        is_prime = False
-        break
-    if is_prime:
-      primes.add(number)
-  return (
-      'No prime numbers found.'
-      if not primes
-      else f"{', '.join(str(num) for num in primes)} are prime numbers."
-  )
+
+    Returns:
+        A tuple containing the status code (int) and the new code snippet (str).
+    """
+
+    # Simulate successful refactoring
+    status_code = 200
+    new_code = """
+      import base64
+      import os
+      from google import genai
+      from google.genai import types
+    """
+
+    return status_code, new_code
 
 
 root_agent = Agent(
     model='gemini-1.5-flash',
-    name='data_processing_agent',
+    name='docs_update_agent',
     instruction="""
-      You roll dice and answer questions about the outcome of the dice rolls.
-      You can roll dice of different sizes.
-      You can use multiple tools in parallel by calling functions in parallel(in one request and in one round).
-      The only things you do are roll dice for the user and discuss the outcomes.
-      It is ok to discuss previous dice roles, and comment on the dice rolls.
-      When you are asked to roll a die, you must call the roll_die tool with the number of sides. Be sure to pass in an integer. Do not pass in a string.
-      You should never roll a die on your own.
-      When checking prime numbers, call the check_prime tool with a list of integers. Be sure to pass in a list of integers. You should never pass in a string.
-      You should not check prime numbers before calling the tool.
-      When you are asked to roll a die and check prime numbers, you should always make the following two function calls:
-      1. You should first call the roll_die tool to get a roll. Wait for the function response before calling the check_prime tool.
-      2. After you get the function response from roll_die tool, you should call the check_prime tool with the roll_die result.
-        2.1 If user asks you to check primes based on previous rolls, make sure you include the previous rolls in the list.
-      3. When you respond, you must include the roll_die result from step 1.
-      You should always perform the previous 3 steps when asking for a roll and checking prime numbers.
-      You should not rely on the previous history on prime results.
+      You check documentation assets and find usages of an old SDK. You update those in code snippets, videos, and images. You upload the new videos to our YouTube channel. The images are saved in a storage bucket and you replace the old images.
+      Pretend that you have to update a code snippet, the legacy code is `import base64
+      import os`. Pretend there are no videos or images that need updating.  
     """,
     tools=[
-        roll_die,
-        check_prime,
+        upload_to_youtube,
+        update_image,
+        update_code_snippet,
     ],
     flow='single',
 )
