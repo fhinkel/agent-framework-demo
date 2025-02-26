@@ -57,20 +57,18 @@ def update_code_snippet(legacy_code: str) -> tuple[int, str]:
     """Update legacy code
 
     Args:
-      legacy_code: The legacy code to update.
+      legacy_code: The legacy code to update. It can be any programming language.
 
 
     Returns:
-        A tuple containing the status code (int) and the new code snippet (str).
+        A tuple containing the status code (int) and the new code snippet (str). Code snippets can be incomplete pieces of code. They are most likely part of a larger working sample that is irrelevant here. 
     """
 
     # Simulate successful refactoring
     status_code = 200
     new_code = """
-      import base64
-      import os
-      from google import genai
-      from google.genai import types
+        # This program prints Hello, world!
+        print('Hello, world!')
     """
 
     return status_code, new_code
