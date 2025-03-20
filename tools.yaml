@@ -1,0 +1,24 @@
+sources:
+    alloydb-contracting:
+        kind: "alloydb-postgres"
+        project: "af-deploy"
+        region: "us-central1"
+        cluster: "vector-cluster"
+        instance: "local-building-codes-primary"
+        database: "postgres"
+        user: "postgres"
+        password: "******"
+
+tools:
+  local-codes:
+    kind: postgres-sql
+    source: alloydb-contracting
+    description: Get the code relevant for a specific building feature.
+    parameters:
+      - name: description
+        type: string
+        description: A specific building feature like toilet or water heater.
+    statement: |
+      SELECT price FROM buildingcodes
+      ORDER BY text_embeddings <=> CAST(embedding('text-embedding-005', $1) AS vector(768))
+      LIMIT 1;
