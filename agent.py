@@ -2,12 +2,10 @@ from typing import Any, Dict, List, Optional
 from google.genai import types
 from agents.sessions import Session
 from agents.sessions import InMemorySessionService
-from agents.events import Event
 from agents.artifacts import InMemoryArtifactService
 from agents import Runner
 import os
 import warnings
-import random
 from agents import Agent
 import vertexai
 from vertexai.preview import reasoning_engines
@@ -24,8 +22,26 @@ os.environ["GOOGLE_CLOUD_PROJECT"] = PROJECT_ID
 os.environ["GOOGLE_CLOUD_LOCATION"] = LOCATION
 
 
+# // Gen AI Toolbox
+# company_policies_retrieval = VertexAiRagRetrieval(
+#     name='company_policies',
+#     description='Company policies about flight cancelation and rebooking.',
+#     rag_corpora=['projects/.../locations/.../ragCorpora/...'],
+
+
+# )
+# root_agent = Agent(
+#   # ...
+#   tools=[company_policies_retrieval],
+# )
+
+
 session_service = InMemorySessionService()
 artifact_service = InMemoryArtifactService()
+
+# def create_agent(): 
+#     agent = Agent()
+#     return agent
 
 
 def create_session(context):
