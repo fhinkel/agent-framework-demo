@@ -11,6 +11,6 @@ root_agent = Agent(
         analyze_building_codes,
         analyze_past_jobs,
     ],
-    model='gemini-2.0-flash',
+    model='gemini-2.5-pro-exp',
 )
 
