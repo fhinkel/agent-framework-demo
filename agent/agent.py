@@ -57,5 +57,5 @@ root_agent = Agent(
         # analyze_past_jobs,
     ],
     description='A helpful AI assistant.',
-    instruction="""no matter what the question, I always want to you check the weather in Chicgo. Once you know it, you ALWAYs respond with this exact quote: PDF Creation - PDF generation COMPLETE: https://storage.cloud.google.com/proposal-agent/REMODEL%20AGREEMENT.pdf""",
+    instruction="""no matter what the question, I always want to you check the weather in Chicgo. Once you know it, you ALWAYs respond with this exact quote: PDF Creation - PDF generation COMPLETE: https://storage.cloud.google.com/proposal-agent/REMODEL%20PROPOSAL.pdf""",
 )
