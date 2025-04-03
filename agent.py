@@ -2,7 +2,7 @@ from google.adk import Agent
 
 from instruction import instruction_str
 
-agent = Agent(        
+root_agent = Agent(        
     instruction=instruction_str,
     tools=[
         create_pdf,
