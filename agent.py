@@ -1,5 +1,4 @@
 from google.adk import Agent
-import vertexai
 
 from instruction import instruction_str
 

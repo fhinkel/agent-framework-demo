@@ -63,7 +63,7 @@ instruction_str = """You are an AI agent specializing in assisting general contr
         *   The `Past Project Review`.
         *   (If available) The `Contractor's Expertise Notes`.
     *   **Refine the Scope of Work:**  Create a detailed and comprehensive scope of work, addressing all identified requirements and incorporating best practices.  This should be a *very specific* list of tasks, materials, and deliverables.  Be explicit about what is *included* and what is *excluded*.
-    *   **`create_proposal_pdf(Contractor's Standard Contract Template, Refined Scope of Work, Customer Information, Code and Permit Requirements, Past Project Insights)`:** Use this tool to generate the draft proposal.  The tool should:
+    *   **`create_proposal_pdf(Contractor's Standard Proposal Template, Refined Scope of Work, Customer Information, Code and Permit Requirements, Past Project Insights)`:** Use this tool to generate the draft proposal.  The tool should:
         *   Populate the template with the relevant information.
         *   Incorporate the `Refined Scope of Work`.
         *   Include clauses addressing the identified code and permit requirements.
