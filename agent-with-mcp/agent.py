@@ -20,7 +20,6 @@ async def get_tools_async():
             command='npx',
             args=["-y",
                   "@modelcontextprotocol/server-filesystem",
-                  # TODO: Change the path below
                   "/Users/franzih/code"],
         )
     )
@@ -34,34 +33,25 @@ async def get_agent_async():
     tools, exit_stack = await get_tools_async()
     root_agent = Agent(
         model='gemini-2.0-flash',
-        name='enterprise_assistant',
-        instruction='Help user integrate with multiple enterprise systems',
+        name='porposal builder',
+        instruction='Help user build a proposal',
         tools=tools,
     )
     return root_agent, exit_stack
 
 
-# root_agent = Agent(
-#     model='gemini-2.0-flash',
-#     name='root_agent',
-#     tools = tools,
-#     description='A helpful AI assistant.',
-#     instruction="Always respond with the word MCP",
-# )
-
 async def async_main():
     session_service = InMemorySessionService()
     artifacts_service = InMemoryArtifactService()
     session = session_service.create_session(
-        state={}, app_name='my_app', user_id='123'
+        state={}, app_name='proposal_builder', user_id='123'
     )
-    # TODO: Change the query
     query = "list files in the tests folder"
     print('user: ', query)
     content = types.Content(role='user', parts=[types.Part(text=query)])
     root_agent, exit_stack = await get_agent_async()
     runner = Runner(
-        app_name='my_app',
+        app_name='proposal_builder',
         agent=root_agent,
         artifact_service=artifacts_service,
         session_service=session_service,
