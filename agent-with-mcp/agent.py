@@ -31,11 +31,17 @@ async def get_tools_async():
 async def get_agent_async():
     """Creates an ADK Agent with tools from MCP Server."""
     tools, exit_stack = await get_tools_async()
+    # print names of all tools
+    # for tool in tools:
+        # print(tool._get_declaration().description)
+        # print()
+    
+    list_files_tool = tools[5]
     root_agent = Agent(
         model='gemini-2.0-flash',
-        name='porposal builder',
+        name='porposal_builder',
         instruction='Help user build a proposal',
-        tools=tools,
+        tools=[list_files_tool],
     )
     return root_agent, exit_stack
 
