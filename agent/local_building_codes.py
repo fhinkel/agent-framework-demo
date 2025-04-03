@@ -1,4 +1,4 @@
-from agents.tools.toolbox_tool import ToolboxTool
+from google.adk.tools.toolbox_tool import ToolboxTool
 from toolbox_langchain import ToolboxClient
 
 toolbox = ToolboxClient("https://toolbox-601315048597.us-central1.run.app/")
