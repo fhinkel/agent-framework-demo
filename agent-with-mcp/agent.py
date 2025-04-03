@@ -19,8 +19,9 @@ async def get_tools_async():
         connection_params=StdioServerParameters(
             command='npx',
             args=["-y",
-                  "@modelcontextprotocol/server-filesystem",
-                  "/Users/franzih/code"],
+                  "@modelcontextprotocol/server-postgres",
+                  "postgresql://localhost:5432/toolbox_db",
+                  ],
         )
     )
     # MCP requires maintaining a connection to the local MCP Server.
@@ -33,15 +34,14 @@ async def get_agent_async():
     tools, exit_stack = await get_tools_async()
     # print names of all tools
     # for tool in tools:
-        # print(tool._get_declaration().description)
-        # print()
-    
-    list_files_tool = tools[5]
+    # print(tool._get_declaration().description)
+    # print()
+
     root_agent = Agent(
         model='gemini-2.0-flash',
         name='porposal_builder',
         instruction='Help user build a proposal',
-        tools=[list_files_tool],
+        tools=tools,
     )
     return root_agent, exit_stack
 
@@ -52,7 +52,7 @@ async def async_main():
     session = session_service.create_session(
         state={}, app_name='proposal_builder', user_id='123'
     )
-    query = "list files in the tests folder"
+    query = "SELECT * FROM hotels WHERE location ILIKE 'Basel'"
     print('user: ', query)
     content = types.Content(role='user', parts=[types.Part(text=query)])
     root_agent, exit_stack = await get_agent_async()
