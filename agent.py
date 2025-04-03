@@ -2,9 +2,9 @@ from google.adk import Agent
 import vertexai
 
 from instruction import instruction_str
-
-root_agent = Agent(        
-    instruction = instruction_str,
+``
+agent = Agent(        
+    instruction=instruction_str,
     tools=[
         create_pdf,
         calculate_materials_list,
