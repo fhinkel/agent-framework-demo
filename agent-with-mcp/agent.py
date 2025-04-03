@@ -40,7 +40,7 @@ async def get_agent_async():
     root_agent = Agent(
         model='gemini-2.0-flash',
         name='porposal_builder',
-        instruction='Help user build a proposal',
+        instruction='Help the user get the name of hotels avaialbe in a specific location. When you invoke the database tool, you have to pass a SQL statement. The table is called hotels, it has the folowing fields id, name, location, price_tier, checkin_date, checkout_date, booked',
         tools=tools,
     )
     return root_agent, exit_stack
@@ -52,7 +52,9 @@ async def async_main():
     session = session_service.create_session(
         state={}, app_name='proposal_builder', user_id='123'
     )
-    query = "SELECT * FROM hotels WHERE location ILIKE 'Basel'"
+    query = "Find hotels in Basel"
+    # query = "SELECT * FROM hotels WHERE location ILIKE 'Basel'"
+
     print('user: ', query)
     content = types.Content(role='user', parts=[types.Part(text=query)])
     root_agent, exit_stack = await get_agent_async()
