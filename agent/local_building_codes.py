@@ -1,14 +1,18 @@
-from google.adk.tools.toolbox_tool import ToolboxTool
-from toolbox_langchain import ToolboxClient
+from google.adk.tools.mcp_tool.mcp_toolset import MCPToolset, SseServerParams
+from google.adk.tools.tool_context import ToolContext
 
-toolbox = ToolboxClient("https://toolbox-601315048597.us-central1.run.app/")
-local_building_codes_tool = toolbox.load_tool("local-building-codes")
-
-def analyze_building_codes(feature: str) -> str:
+async def analyze_building_codes(feature: str, tool_context: ToolContext) -> str:
     """Get the building code relevant for a specific building feature.
     Args:
-      feature: The feature to search for in the different building codes for the matching municipality. Such as toilet or water heaters. 
+      feature: The feature to search for in the different building codes for the matching municipality. Such as window replacements and sinks. 
     Returns:
         A string summarizing local building code requirements
     """
-    return local_building_codes_tool.invoke({"description": feature})  
+    tools = await MCPToolset.from_server(
+        connection_params=SseServerParams(
+            url='https://mcp-601315048597.us-central1.run.app:5000/mcp/sse'
+        )
+    )
+    
+    tool = [t for t in tools if t.name == 'local_building_codes'][0]
+    return tool.run_async({"description": feature}, tool_context)
