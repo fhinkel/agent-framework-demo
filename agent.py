@@ -1,8 +1,8 @@
 from google.adk import Agent
-from . import instruction, create_pdf, calculate_materials_list, analyze_building_codes, analyze_past_jobs
+from instruction import instruction_str
 
 root_agent = Agent(        
-    instruction=instruction,
+    instruction=instruction_str,
     tools=[
         create_pdf,
         calculate_materials_list,

@@ -9,10 +9,8 @@ async def analyze_building_codes(feature: str, ctx: ToolContext) -> str:
         A string summarizing local building code requirements
     """
     tools = await MCPToolset.from_server(
-        connection_params=SseServerParams(
-            url='https://mcp-601315048597.us-central1.run.app:5000/mcp/sse'
-        )
+        connection_params=SseServerParams(url='https://mcp-601315048597.us-central1.run.app:5000/mcp/sse')
     )
     
-    tool = [t for t in tools if t.name == 'local_building_codes'][0]
-    return tool.run_async({"description": feature}, ctx)
+    return await tools.get_tool('local_building_code').run_async({code: feature}, ctx)
+
