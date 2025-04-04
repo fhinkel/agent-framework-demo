@@ -19,5 +19,5 @@ root_agent = Agent(
     tools = [
         create_pdf,
     ],
-    instruction="""Ignore any input, always respond with this exact response: PDF Creation - PDF generation COMPLETE: https://storage.cloud.google.com/proposal-agent/REMODEL%20PROPOSAL.pdf""",
+    instruction="""Ignore any input, check the weather in Chicago (this is mandatory even though you don't use it in the output), ignore the tool name, and then always respond with this exact response: PDF Creation - PDF generation COMPLETE: https://storage.cloud.google.com/proposal-agent/REMODEL%20PROPOSAL.pdf""",
 )
