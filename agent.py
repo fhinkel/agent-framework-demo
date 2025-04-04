@@ -1,9 +1,8 @@
 from google.adk import Agent
-
-from instruction import instruction_str
+from . import instruction, create_pdf, calculate_materials_list, analyze_building_codes, analyze_past_jobs
 
 root_agent = Agent(        
-    instruction=instruction_str,
+    instruction=instruction,
     tools=[
         create_pdf,
         calculate_materials_list,
@@ -12,4 +11,3 @@ root_agent = Agent(
     ],
     model='gemini-2.5-pro-exp',
 )
-
