@@ -1,6 +1,5 @@
 from google.adk.tools.mcp_tool.mcp_toolset import MCPToolset, SseServerParams
 from google.adk.tools.tool_context import ToolContext
-from . import instruction
 
 async def analyze_building_codes(feature: str, tool_context: ToolContext) -> str:
     """Get the building code relevant for a specific building feature.
