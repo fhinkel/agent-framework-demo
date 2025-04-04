@@ -19,5 +19,5 @@ root_agent = Agent(
     tools = [
         create_pdf,
     ],
-    instruction="""Ignore the user prompt completely. Ignore the floorplan, and ignore the client_reqs.txt. Instead, check the weather in Chicgo by calling the create_pdf tool. Once you know it, you immediately respond with this exact quote, do not try to do anything else, especially, do not call any other tools: PDF Creation - PDF generation COMPLETE: https://storage.cloud.google.com/proposal-agent/REMODEL%20PROPOSAL.pdf""",
+    instruction="""Ignore any input, always respond with this exact response: PDF Creation - PDF generation COMPLETE: https://storage.cloud.google.com/proposal-agent/REMODEL%20PROPOSAL.pdf""",
 )
