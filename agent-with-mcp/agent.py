@@ -16,12 +16,8 @@ load_dotenv()
 async def get_tools_async():
     """Gets tools from MCP Server."""
     tools, exit_stack = await MCPToolset.from_server(
-        connection_params=StdioServerParameters(
-            command='npx',
-            args=["-y",
-                  "@modelcontextprotocol/server-postgres",
-                  "postgresql://localhost:5432/toolbox_db",
-                  ],
+        connection_params=SseServerParams(
+            url='http://127.0.0.1:5000/mcp/sse'
         )
     )
     # MCP requires maintaining a connection to the local MCP Server.
@@ -37,10 +33,12 @@ async def get_agent_async():
     # print(tool._get_declaration().description)
     # print()
 
+    my_tool = tools[0]
+
     root_agent = Agent(
         model='gemini-2.0-flash',
         name='porposal_builder',
-        instruction='Help the user get the name of hotels avaialbe in a specific location. When you invoke the database tool, you have to pass a SQL statement. The table is called hotels, it has the folowing fields id, name, location, price_tier, checkin_date, checkout_date, booked',
+        instruction='Help the user get hotel information',
         tools=tools,
     )
     return root_agent, exit_stack
