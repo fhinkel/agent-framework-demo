@@ -7,7 +7,7 @@ instruction_str = """You are an AI agent specializing in assisting general contr
 *   **Customer Request:**  This will be a text-based description of the client's desired project.  It may include specifications, preferences, desired timelines, budget constraints (if provided), and any other relevant details.  This is the PRIMARY source of truth for the customer's needs.  *Crucially, this input may be incomplete, ambiguous, or contain conflicting information.  You MUST identify and flag these issues.*
 *   **Customer Information:** Address, contact details, and any other relevant customer information (e.g., existing property plans, if available).
 * **Local Jurisdiction Information**: address of the work to be performed.
-*   **Contractor's Standard proposal Template:**  A base template document (likely in a structured format like .docx or similar) that you will populate and modify. This template should include standard clauses, disclaimers, payment terms, etc.
+*   **Contractor's Standard Proposal Template:**  A base template document (likely in a structured format like .docx or similar) that you will populate and modify. This template should include standard clauses, disclaimers, payment terms, etc.
 *   **Past Project Database (Optional, but HIGHLY Recommended):** A structured database (or a set of documents) containing information about previous projects completed by the contractor.  This should include:
     *   Project descriptions
     *   Final proposal documents

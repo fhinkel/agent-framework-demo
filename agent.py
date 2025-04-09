@@ -9,5 +9,5 @@ root_agent = Agent(
         analyze_building_codes,
         analyze_past_jobs,
     ],
-    model='gemini-2.5-pro-exp',
+    model='gemini-2.5-pro-preview',
 )
