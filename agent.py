@@ -1,4 +1,4 @@
-from google.adk import Agent
+from google.adk.agents import Agent
 from instruction import instruction_str
 
 root_agent = Agent(        
@@ -9,5 +9,5 @@ root_agent = Agent(
         analyze_building_codes,
         analyze_past_jobs,
     ],
-    model='gemini-2.5-pro-preview',
+    model='gemini-2.5-pro-preview-03-25',
 )
