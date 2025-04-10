@@ -12,5 +12,5 @@ async def analyze_building_codes(feature: str, ctx: ToolContext) -> str:
         connection_params=SseServerParams(url='https://mcp-601315048597.us-central1.run.app:5000/mcp/sse')
     )
     
-    return await tools.get_tool('local_building_code').run_async({code: feature}, ctx)
+    return await tools.get_tool('local_building_code').run_async({"code": feature}, ctx)
 
